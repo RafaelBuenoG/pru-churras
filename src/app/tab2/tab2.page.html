@@ -13,22 +13,26 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-toolbar>
+    <ion-label>Valendo {{pontos}}</ion-label>
+  </ion-toolbar>
+
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-button expand="block" color="danger" size="large">1</ion-button>
+        <ion-button (click)="valendo1()" expand="block" color="danger" size="large">1</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button expand="block" color="danger" size="large">3</ion-button>
+        <ion-button (click)="valendo3()" expand="block" color="danger" size="large">3</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button expand="block" color="danger" size="large">6</ion-button>
+        <ion-button (click)="valendo6()" expand="block" color="danger" size="large">6</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button expand="block" color="danger" size="large">9</ion-button>
+        <ion-button (click)="valendo9()" expand="block" color="danger" size="large">9</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button expand="block" color="danger" size="large">12</ion-button>
+        <ion-button (click)="valendo12()" expand="block" color="danger" size="large">12</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -36,30 +40,30 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <label class="label-time">time 1</label>
-        <ion-button size="large">+</ion-button>
+        <ion-label class="label-time">time 1</ion-label>
+        <ion-button (click)="soma1()" size="large">+</ion-button>
       </ion-col>
       <ion-col>
         <ion-label class="label-time">time 2</ion-label>
-        <ion-button size="large">+</ion-button>
+        <ion-button (click)="soma2()" size="large">+</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
 
   <ion-grid>
     <ion-row>
-      <ion-col>0</ion-col>
-      <ion-col>0</ion-col>
+      <ion-col>{{time1}}</ion-col>
+      <ion-col>{{time2}}</ion-col>
     </ion-row>
   </ion-grid>
 
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-button size="large">-</ion-button>
+        <ion-button (click)="subtracao1()" size="large">-</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button size="large">-</ion-button>
+        <ion-button (click)="subtracao2()" size="large">-</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -69,6 +73,24 @@
       <ion-col>
         <button expand="block"></button>
       </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-toolbar>
+    <ion-button (click)="limpar()" expand="block">
+      Limpar
+    </ion-button>
+  </ion-toolbar>
+
+  <ion-label>Partidas</ion-label>
+  <ion-grid>
+    <ion-row class="row-time">
+      <ion-label>Time 1</ion-label>
+      <ion-label>{{vitoria1}}</ion-label>
+    </ion-row>
+    <ion-row class="row-time">
+      <ion-label>Time 2</ion-label>
+      <ion-label>{{vitoria2}}</ion-label>
     </ion-row>
   </ion-grid>
 
