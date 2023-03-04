@@ -10,6 +10,8 @@ export class Tab2Page {
   pontos = 1;
   time1 = 0;
   time2 = 0;
+  resultado1 = 0;
+  resultado2 = 0;
   vitoria1 = 0;
   vitoria2 = 0;
 
@@ -44,14 +46,20 @@ export class Tab2Page {
   {
     if (this.time1 < 12)
     {
-      this.time1++;
-    }
-    if (this.time1 == 12)
-    {
-      this.vitoria1++
-      this.time1 = 0;
-      this.time2 = 0;
-      console.log(this.vitoria1)
+      this.resultado1 = this.resultado1 + this.pontos;
+      if (this.resultado1 < 12)
+      {
+        this.time1 = this.time1 + this.pontos;
+        this.valendo1()
+      }
+      else
+      {
+        this.vitoria1++
+        this.time1 = 0;
+        this.time2 = 0;
+        this.resultado1 = 0;
+        this.valendo1()
+      }
     }
   }
 
@@ -59,14 +67,20 @@ export class Tab2Page {
   {
     if (this.time2 < 12)
     {
-      this.time2++;
-    }
-    if (this.time2 == 12)
-    {
-      this.vitoria2++
-      this.time1 = 0;
-      this.time2 = 0;
-      console.log(this.vitoria2)
+      this.resultado2 = this.resultado2 + this.pontos;
+      if (this.resultado2 < 12)
+      {
+        this.time2 = this.time2 + this.pontos;
+        this.valendo1()
+      }
+      else
+      {
+        this.vitoria1++
+        this.time1 = 0;
+        this.time2 = 0;
+        this.resultado2 = 0;
+        this.valendo1()
+      }
     }
   }
 
@@ -74,7 +88,15 @@ export class Tab2Page {
   {
     if (this.time1 > 0)
     {
-      this.time1--;
+      this.resultado1 = this.resultado1 - this.pontos;
+      if (this.resultado1 < 0)
+      {
+        this.time1 = this.time1 - this.pontos;
+      }
+      else
+      {
+        return;
+      }
     }
   }
 
@@ -82,18 +104,20 @@ export class Tab2Page {
   {
     if (this.time2 > 0)
     {
-      this.time2--;
+      this.time2 = this.time2 - this.pontos;
     }
   }
 
   limpar()
   {
-    this.pontos = 1;
+    this.valendo1()
+    this.resultado1 = 0;
+    this.resultado2 = 0;
     this.time1 = 0;
     this.time2 = 0;
     this.vitoria1 = 0;
     this.vitoria2 = 0;
   }
 
-  
+
 }
