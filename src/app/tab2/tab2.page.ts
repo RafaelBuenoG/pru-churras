@@ -17,29 +17,28 @@ export class Tab2Page {
 
   constructor() {}
 
-  valendo1()
+  valendo(qtde: number)
   {
-    this.pontos = 1;
-  }
-
-  valendo3()
-  {
-    this.pontos = 3;
-  }
-
-  valendo6()
-  {
-    this.pontos = 6;
-  }
-
-  valendo9()
-  {
-    this.pontos = 9;
-  }
-
-  valendo12()
-  {
-    this.pontos = 12;
+    if (qtde == 1)
+    {
+      this.pontos = 1;
+    }
+    if (qtde == 3)
+    {
+      this.pontos = 3;
+    }
+    if (qtde == 6)
+    {
+      this.pontos = 6;
+    }
+    if (qtde == 9)
+    {
+      this.pontos = 9;
+    }
+    if (qtde == 12)
+    {
+      this.pontos = 12;
+    }
   }
 
   soma1()
@@ -50,15 +49,15 @@ export class Tab2Page {
       if (this.resultado1 < 12)
       {
         this.time1 = this.time1 + this.pontos;
-        this.valendo1()
+        this.valendo(1);
       }
       else
       {
-        this.vitoria1++
+        this.vitoria1++;
         this.time1 = 0;
         this.time2 = 0;
         this.resultado1 = 0;
-        this.valendo1()
+        this.valendo(1);
       }
     }
   }
@@ -71,15 +70,15 @@ export class Tab2Page {
       if (this.resultado2 < 12)
       {
         this.time2 = this.time2 + this.pontos;
-        this.valendo1()
+        this.valendo(1);
       }
       else
       {
-        this.vitoria1++
+        this.vitoria2++;
         this.time1 = 0;
         this.time2 = 0;
         this.resultado2 = 0;
-        this.valendo1()
+        this.valendo(1);
       }
     }
   }
@@ -89,13 +88,16 @@ export class Tab2Page {
     if (this.time1 > 0)
     {
       this.resultado1 = this.resultado1 - this.pontos;
-      if (this.resultado1 < 0)
+      if (this.resultado1 >= 0)
       {
         this.time1 = this.time1 - this.pontos;
+        this.valendo(1);
       }
       else
       {
-        return;
+        this.time1 = 0;
+        this.resultado1 = this.time1;
+        this.valendo(1);
       }
     }
   }
@@ -104,20 +106,30 @@ export class Tab2Page {
   {
     if (this.time2 > 0)
     {
-      this.time2 = this.time2 - this.pontos;
+      this.resultado2 = this.resultado2 - this.pontos;
+      if (this.resultado2 >= 0)
+      {
+        this.time2 = this.time2 - this.pontos;
+        this.valendo(1);
+      }
+      else
+      {
+        this.time2 = 0;
+        this.resultado2 = this.time2;
+        this.valendo(1);
+      }
     }
   }
 
   limpar()
   {
-    this.valendo1()
-    this.resultado1 = 0;
-    this.resultado2 = 0;
+    this.valendo(1);
+    this.pontos = 1;
     this.time1 = 0;
     this.time2 = 0;
+    this.resultado1 = 0;
+    this.resultado2 = 0;
     this.vitoria1 = 0;
     this.vitoria2 = 0;
   }
-
-
 }
